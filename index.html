@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Desafío primera sesión presencial</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <p id="texto-entrada">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nisl urna, posuere ut est non, 
+        posuere hendrerit massa. Suspendisse potenti. Duis vulputate ex eget turpis efficitur dapibus. 
+        Maecenas semper ligula eget dapibus finibus. Nullam dignissim, erat eu scelerisque convallis, 
+        lacus nunc interdum massa, non porta mauris ante sed elit. Sed lobortis felis augue, in 
+        scelerisque 
+        nisl ornare sit amet. Cras quis metus et risus facilisis posuere. Praesent at suscipit ipsum. 
+        Aliquam erat volutpat. Donec non orci et ex dictum sagittis quis nec justo. Praesent non massa 
+        vitae nulla scelerisque condimentum sed eu mauris. Phasellus pharetra quam vel metus 
+        rhoncus, 
+        sit amet eleifend justo sollicitudin. Praesent facilisis sem vitae vestibulum malesuada. Sed 
+        suscipit 
+        felis et iaculis tempor. Sed quam leo, dapibus sit amet elit et, dictum suscipit nulla. Phasellus 
+        quis ipsum eleifend turpis volutpat blandit. Pellentesque non ullamcorper lectus, sit amet finibus 
+        magna. Donec bibendum tincidunt tortor, et rutrum ante finibus ut. In eleifend id magna feugiat 
+        finibus. 
+        Quisque consequat, justo sed rutrum semper, augue enim commodo lorem, eget consectetur 
+        urna ante vel leo.  
+        Donec iaculis metus urna, eu convallis lorem commodo eget. Ut vitae fringilla ipsum. Proin non 
+        tellus porta, 
+        mattis lorem et, elementum lacus. Etiam congue neque sapien, posuere porta turpis rhoncus 
+        vitae. Suspendisse  
+        eu semper dolor, ac blandit magna. Nam aliquet sem vitae risus tempor, in posuere lectus 
+        dictum. Maecenas  
+
+        vitae enim eget enim ornare euismod. Integer ut nisl sit amet lacus sollicitudin rutrum quis vel 
+        diam. 
+        Suspendisse ac mattis leo. Etiam eu efficitur nisi. Sed porta viverra odio a tincidunt. Nam et felis 
+        ipsum. 
+        Sed aliquam id enim at tempor. Sed pretium sapien accumsan urna faucibus congue. Duis varius 
+        ligula sed est 
+        placerat suscipit. Nunc ultrices nisi vitae faucibus rhoncus. Maecenas malesuada risus vel 
+        consectetur 
+        venenatis. Phasellus in accumsan mauris. Sed at mi sit amet tortor sagittis imperdiet sit amet in 
+        augue. 
+        Phasellus convallis tincidunt nibh, sed luctus nisi dignissim sit amet. Maecenas eget felis a turpis 
+        tristique 
+        tincidunt quis id nulla. Pellentesque lacinia, metus a vestibulum mattis, metus odio varius augue, 
+        non ornare 
+        mauris elit sed est. Vivamus dapibus mauris ex, non efficitur metus condimentum eget. Duis 
+        lacinia arcu nec 
+        mauris scelerisque egestas vitae sit amet ligula. Vivamus mollis nibh ut placerat laoreet. Integer 
+        arcu tellus, 
+        dignissim sit amet tortor nec, commodo facilisis elit. 
+    </p>
+    <div id="resultados">
+        <h1>Resultados</h1>
+    </div>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+        //agarramos el div
+        var res = document.getElementById('resultados');
+        //agarramos el el texto principal
+        var text = document.getElementById('texto-entrada');
+        //reemplazamos el contenido y lo transformamos en arrelgo
+        var a = text.textContent.replace(/(\r\n|\,|\.|\n|\r)/gm, "").split(" ");
+        //filtramos
+        let aa = a.filter(word => word.length > 0);
+        
+        letters = {
+        a: 0,
+        b: 0,
+        c: 0,
+        d: 0,
+        e: 0,
+        f: 0,
+        g: 0,
+        h: 0,
+        i: 0,
+        j: 0,
+        k: 0,
+        l: 0,
+        m: 0,
+        n: 0,
+        o: 0,
+        p: 0,
+        q: 0,
+        r: 0,
+        s: 0,
+        t: 0,
+        u: 0,
+        v: 0,
+        w: 0,
+        x: 0,
+        y: 0,
+        z: 0
+    }
+
+    words={}
+    for(var i = 0; i < aa.length; i++){
+        //aqui se hace un arreglo de la palabra
+        let arr = [...aa[i].toLowerCase()];
+        //console.log(arr);
+        arr.forEach(element => letters[element]+=1 );
+    };
+
+    for (const j in letters) {
+        var div = document.createElement('div');
+        let p = `<p><strong>${j}: </strong><span>${letters[j]}</span></p>`; 
+        /* div.innerHTML = p; */
+        //console.log(p);
+        div.innerHTML = p;
+        res.appendChild(div);
+    }
+    //por palabra
+
+    aa.forEach(element => words[element.toLowerCase()]=0);
+    aa.forEach(element => words[element.toLowerCase()]+=1);
+    console.log(words);
+
+   for (const j in words) {
+        var div = document.createElement('div');
+        let p = `<p><strong>${j}: </strong><span>${words[j]}</span></p>`; 
+         div.innerHTML = p; 
+        console.log(p);
+        div.innerHTML = p;
+        res.appendChild(div);
+    }
+ 
+
+});
+   
+</script>
+</html>
